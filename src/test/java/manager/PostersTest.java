@@ -28,8 +28,9 @@ class PostersTest {
         Movies[] expected = new Movies[]{third, second, first};
         assertArrayEquals(expected, actual);
     }
+
     @Test
-    public  void shouldGetOverLimit() {
+    public void shouldGetOverLimit() {
         Posters manager = new Posters();
         manager.add(first);
         manager.add(second);
@@ -43,13 +44,73 @@ class PostersTest {
         manager.add(tenth);
 
         Movies[] actual = manager.getAll();
-        Movies[] expected = new Movies[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third,second, first};
+        Movies[] expected = new Movies[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
         assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldGetEmpty() {
         Movies[] actual = manager.getAll();
-        Movies[] expexted = new Movies[0];
-        assertArrayEquals(expexted, actual);
+        Movies[] expeсted = new Movies[0];
+        assertArrayEquals(expeсted, actual);
+    }
+
+    @Test
+    public void shouldNumberOfFilmsEqualToTheLimit() {
+        Posters manager = new Posters(10);
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        manager.add(sixth);
+        manager.add(seventh);
+        manager.add(eighth);
+        manager.add(ninth);
+        manager.add(tenth);
+
+        Movies[] actual = manager.getAll();
+        Movies[] expeсted = new Movies[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+        assertArrayEquals(expeсted, actual);
+
+    }
+
+    @Test
+    public void shouldNumberOfFilmsAboveTheLimit() {
+        Posters manager = new Posters(11);
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        manager.add(sixth);
+        manager.add(seventh);
+        manager.add(eighth);
+        manager.add(ninth);
+        manager.add(tenth);
+
+        Movies[] actual = manager.getAll();
+        Movies[] expeсted = new Movies[]{tenth,ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+        assertArrayEquals(expeсted, actual);
+
+    }
+
+    @Test
+    public void shouldNumberOfFilmsBelowTheLimit() {
+        Posters manager = new Posters(9);
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        manager.add(sixth);
+        manager.add(seventh);
+        manager.add(eighth);
+        manager.add(ninth);
+        manager.add(tenth);
+
+        Movies[] actual = manager.getAll();
+        Movies[] expeсted = new Movies[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
+        assertArrayEquals(expeсted, actual);
     }
 }

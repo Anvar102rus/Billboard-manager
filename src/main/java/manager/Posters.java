@@ -1,4 +1,5 @@
 package manager;
+
 import domain.Movies;
 
 
@@ -7,12 +8,10 @@ public class Posters {
     private int numberOfMovies = 10;
 
     public Posters() {
-        this.movies = movies;
-        this.numberOfMovies = numberOfMovies;
     }
 
-    public Posters(int i) {
-
+    public Posters(int numberOfMovies) {
+        this.numberOfMovies = numberOfMovies;
     }
 
 
@@ -29,15 +28,16 @@ public class Posters {
         int resultLength;
         if (movies.length > numberOfMovies) {
             resultLength = numberOfMovies;
-        } else  {
+        } else {
             resultLength = movies.length;
         }
-        Movies[] result = new Movies[movies.length];
+        Movies[] result = new Movies[resultLength];
         for (int i = 0; i < result.length; i++) {
             int index = movies.length - i - 1;
             result[i] = movies[index];
         }
-            return result;
-        }
+        return result;
+    }
+
 
 }
